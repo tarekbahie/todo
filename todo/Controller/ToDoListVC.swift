@@ -12,21 +12,13 @@ class ToDoListVC: UITableViewController {
 
     
     var itemArray = [Item]()
-    let defaults = UserDefaults.standard
-    
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     override func viewDidLoad() {
         super.viewDidLoad()
-        let newItem = Item(nameOfItme: "findBill", completion: false)
-        itemArray.append(newItem)
-        let newItem2 = Item(nameOfItme: "askBill", completion: false)
-        itemArray.append(newItem2)
-        let newItem3 = Item(nameOfItme: "killBill", completion: false)
-        itemArray.append(newItem3)
         
         
-        if let items = defaults.array(forKey: "TodoListArray") as? [Item] {
-        itemArray = items
-        }
+       loadItems()
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -55,7 +47,7 @@ class ToDoListVC: UITableViewController {
         cell.backgroundColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
         
         
-        cell.accessoryType = item.done == true ?  .checkmark :  .none
+        cell.accessoryType = item.done ?  .checkmark :  .none
         
 //        if item.done == true {
 //            cell.accessoryType = .checkmark
@@ -74,13 +66,14 @@ class ToDoListVC: UITableViewController {
         //print(itemArray[indexPath.row])
         
             itemArray[indexPath.row].done = !itemArray[indexPath.row].done
+            tableView.deselectRow(at: indexPath, animated: true)
+            saveItems()
 //        if itemArray[indexPath.row].done == true {
 //            itemArray[indexPath.row].done = false
 //        } else {
 //            itemArray[indexPath.row].done = true
 //        }
-        tableView.reloadData()
-        tableView.deselectRow(at: indexPath, animated: true)
+        
         
     }
     
@@ -97,8 +90,8 @@ class ToDoListVC: UITableViewController {
             
             let newItem = Item(nameOfItme: textField.text!, completion: false)
             self.itemArray.append(newItem)
-            self.defaults.set(self.itemArray, forKey: "TodoListArray")
-            self.tableView.reloadData()
+            self.saveItems()
+            
             if self.itemArray.count > 0 {
                 let endIndex = IndexPath(row: self.itemArray.count - 1, section: 0)
                 self.tableView.scrollToRow(at: endIndex, at: .bottom, animated: true)
@@ -106,7 +99,28 @@ class ToDoListVC: UITableViewController {
         }))
         present(alert, animated: true, completion: nil)
         
+    }
+    
+    func saveItems(){
+        let encoder = PropertyListEncoder()
+        do {
+            let data = try encoder.encode(itemArray)
+            try data.write(to: dataFilePath!)
+        } catch {
+            print("error encoding item array \(error)")
+        }
         tableView.reloadData()
+    }
+    func loadItems() {
+        
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            do{
+            itemArray = try decoder.decode([Item].self, from: data)
+        } catch {
+            print("error decoding item array\(error)")
+        }
+            tableView.reloadData()
     }
     
     
@@ -160,4 +174,5 @@ class ToDoListVC: UITableViewController {
     }
     */
 
+}
 }
