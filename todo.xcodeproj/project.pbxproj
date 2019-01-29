@@ -15,7 +15,8 @@
 		476B6FC921FCD38300BBBD41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 476B6FC721FCD38300BBBD41 /* LaunchScreen.storyboard */; };
 		476B6FD721FCD54300BBBD41 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476B6FD621FCD54300BBBD41 /* TodoCell.swift */; };
 		476B6FD921FCD60400BBBD41 /* ToDoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476B6FD821FCD60400BBBD41 /* ToDoListVC.swift */; };
-		479F31E521FF8ACC00D20517 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 479F31E321FF8ACC00D20517 /* DataModel.xcdatamodeld */; };
+		4785EA952200B23A00F59CEA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4785EA942200B23A00F59CEA /* Item.swift */; };
+		4785EA972200B24600F59CEA /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4785EA962200B24600F59CEA /* Category.swift */; };
 		D1D6626E7C4D16F5724529E8 /* Pods_todo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A535DCF0FD8A7A675924F70B /* Pods_todo.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +32,8 @@
 		476B6FCA21FCD38300BBBD41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		476B6FD621FCD54300BBBD41 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		476B6FD821FCD60400BBBD41 /* ToDoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListVC.swift; sourceTree = "<group>"; };
-		479F31E421FF8ACC00D20517 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		4785EA942200B23A00F59CEA /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		4785EA962200B24600F59CEA /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		A535DCF0FD8A7A675924F70B /* Pods_todo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_todo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9EC411CFF15DFEBAE7BB509 /* Pods-todo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todo.release.xcconfig"; path = "Pods/Target Support Files/Pods-todo/Pods-todo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,7 +112,8 @@
 		476B6FD221FCD48800BBBD41 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				479F31E321FF8ACC00D20517 /* DataModel.xcdatamodeld */,
+				4785EA962200B24600F59CEA /* Category.swift */,
+				4785EA942200B23A00F59CEA /* Item.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -247,11 +250,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				472CDAE622004D9E009A997F /* CategoryVC.swift in Sources */,
-				479F31E521FF8ACC00D20517 /* DataModel.xcdatamodeld in Sources */,
 				476B6FD921FCD60400BBBD41 /* ToDoListVC.swift in Sources */,
 				476B6FBF21FCD38100BBBD41 /* AppDelegate.swift in Sources */,
+				4785EA952200B23A00F59CEA /* Item.swift in Sources */,
 				476B6FD721FCD54300BBBD41 /* TodoCell.swift in Sources */,
 				472CDAE822005136009A997F /* CategoryCell.swift in Sources */,
+				4785EA972200B24600F59CEA /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,19 +459,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		479F31E321FF8ACC00D20517 /* DataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				479F31E421FF8ACC00D20517 /* DataModel.xcdatamodel */,
-			);
-			currentVersion = 479F31E421FF8ACC00D20517 /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 476B6FB321FCD38100BBBD41 /* Project object */;
 }

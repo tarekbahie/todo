@@ -7,16 +7,18 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
 class CategoryVC: UITableViewController {
 
-    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var categoryArray = [Category]()
+    let realm = try! Realm()
+    
+    
+    var categoryArray : Results<Category>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
+        loadCategories()
         
 
     }
@@ -29,7 +31,7 @@ class CategoryVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categoryArray.count
+        return categoryArray?.count ?? 1
     }
 
    
@@ -38,7 +40,7 @@ class CategoryVC: UITableViewController {
         else {
             return UITableViewCell()
         }
-        cell.categoryTitle.text = categoryArray[indexPath.row].name
+        cell.categoryTitle.text = categoryArray?[indexPath.row].name ?? "No categories added yet"
         cell.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         cell.categoryTitle.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
 
@@ -47,24 +49,22 @@ class CategoryVC: UITableViewController {
  
 // MARK: - Data Manipulation
     
-    func saveData () {
+    func save (Category : Category) {
         do {
-            try context.save()
+            try realm.write {
+                realm.add(Category)
+            }
         } catch {
             print("error saving categoru : \(error)")
         }
         tableView.reloadData()
        
     }
-    func loadData (with request : NSFetchRequest<Category> = Category.fetchRequest()) {
-        do {
-            categoryArray = try context.fetch(request)
-        } catch {
-            print("error loading Categories : \(error)")
-        }
+
+    func loadCategories() {
+        categoryArray = realm.objects(Category.self)
         tableView.reloadData()
     }
-    
     
     
     
@@ -80,14 +80,10 @@ class CategoryVC: UITableViewController {
             textField = categoryTextField
         }
         alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (UIAlertAction) in
-            let newCategory = Category(context: self.context)
+            let newCategory = Category()
             newCategory.name = textField.text!
-            self.categoryArray.append(newCategory)
-            self.saveData()
-            if self.categoryArray.count > 0 {
-                let endIndex = IndexPath(row: self.categoryArray.count - 1, section: 0)
-                self.tableView.scrollToRow(at: endIndex, at: .bottom, animated: true)
-            }
+            self.save(Category: newCategory)
+
         }))
         present(alert, animated: true, completion: nil)
         
@@ -103,7 +99,7 @@ class CategoryVC: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as! ToDoListVC
         if let indexPath = tableView.indexPathForSelectedRow {
-            destination.selectedCategory = categoryArray[indexPath.row]
+            destination.selectedCategory = categoryArray?[indexPath.row]
         }
     }
 }
