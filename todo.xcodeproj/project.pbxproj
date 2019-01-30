@@ -8,32 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		472CDAE622004D9E009A997F /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472CDAE522004D9E009A997F /* CategoryVC.swift */; };
-		472CDAE822005136009A997F /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472CDAE722005136009A997F /* CategoryCell.swift */; };
 		476B6FBF21FCD38100BBBD41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476B6FBE21FCD38100BBBD41 /* AppDelegate.swift */; };
 		476B6FC421FCD38100BBBD41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 476B6FC221FCD38100BBBD41 /* Main.storyboard */; };
 		476B6FC621FCD38300BBBD41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 476B6FC521FCD38300BBBD41 /* Assets.xcassets */; };
 		476B6FC921FCD38300BBBD41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 476B6FC721FCD38300BBBD41 /* LaunchScreen.storyboard */; };
-		476B6FD721FCD54300BBBD41 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476B6FD621FCD54300BBBD41 /* TodoCell.swift */; };
 		476B6FD921FCD60400BBBD41 /* ToDoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476B6FD821FCD60400BBBD41 /* ToDoListVC.swift */; };
 		4785EA952200B23A00F59CEA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4785EA942200B23A00F59CEA /* Item.swift */; };
 		4785EA972200B24600F59CEA /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4785EA962200B24600F59CEA /* Category.swift */; };
+		47CE519F2201D915009FD468 /* SwipTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CE519E2201D915009FD468 /* SwipTableViewController.swift */; };
 		D1D6626E7C4D16F5724529E8 /* Pods_todo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A535DCF0FD8A7A675924F70B /* Pods_todo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		09A1F6F97A253F2E64006032 /* Pods-todo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-todo/Pods-todo.debug.xcconfig"; sourceTree = "<group>"; };
 		472CDAE522004D9E009A997F /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
-		472CDAE722005136009A997F /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		476B6FBB21FCD38100BBBD41 /* todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		476B6FBE21FCD38100BBBD41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		476B6FC321FCD38100BBBD41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		476B6FC521FCD38300BBBD41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		476B6FC821FCD38300BBBD41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		476B6FCA21FCD38300BBBD41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		476B6FD621FCD54300BBBD41 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		476B6FD821FCD60400BBBD41 /* ToDoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListVC.swift; sourceTree = "<group>"; };
 		4785EA942200B23A00F59CEA /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		4785EA962200B24600F59CEA /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		47CE519E2201D915009FD468 /* SwipTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipTableViewController.swift; sourceTree = "<group>"; };
 		A535DCF0FD8A7A675924F70B /* Pods_todo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_todo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9EC411CFF15DFEBAE7BB509 /* Pods-todo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todo.release.xcconfig"; path = "Pods/Target Support Files/Pods-todo/Pods-todo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,10 +91,9 @@
 		476B6FD021FCD46B00BBBD41 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				472CDAE722005136009A997F /* CategoryCell.swift */,
-				476B6FD621FCD54300BBBD41 /* TodoCell.swift */,
 				472CDAE522004D9E009A997F /* CategoryVC.swift */,
 				476B6FD821FCD60400BBBD41 /* ToDoListVC.swift */,
+				47CE519E2201D915009FD468 /* SwipTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -211,13 +208,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-todo/Pods-todo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -251,10 +252,9 @@
 			files = (
 				472CDAE622004D9E009A997F /* CategoryVC.swift in Sources */,
 				476B6FD921FCD60400BBBD41 /* ToDoListVC.swift in Sources */,
+				47CE519F2201D915009FD468 /* SwipTableViewController.swift in Sources */,
 				476B6FBF21FCD38100BBBD41 /* AppDelegate.swift in Sources */,
 				4785EA952200B23A00F59CEA /* Item.swift in Sources */,
-				476B6FD721FCD54300BBBD41 /* TodoCell.swift in Sources */,
-				472CDAE822005136009A997F /* CategoryCell.swift in Sources */,
 				4785EA972200B24600F59CEA /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

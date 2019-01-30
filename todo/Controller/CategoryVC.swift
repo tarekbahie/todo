@@ -8,8 +8,11 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
-class CategoryVC: UITableViewController {
+class CategoryVC: SwipTableViewController {
+    
+    
 
     let realm = try! Realm()
     
@@ -33,16 +36,20 @@ class CategoryVC: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categoryArray?.count ?? 1
     }
+    
+    
+    
 
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as? CategoryCell
-        else {
-            return UITableViewCell()
-        }
-        cell.categoryTitle.text = categoryArray?[indexPath.row].name ?? "No categories added yet"
-        cell.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-        cell.categoryTitle.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        
+        
+        cell.textLabel?.text = categoryArray?[indexPath.row].name ?? "No categories added yet"
+        
+        guard let cellColor = UIColor(hexString: categoryArray?[indexPath.row].color) else {fatalError()}
+        cell.backgroundColor = cellColor
+        cell.textLabel?.textColor = UIColor(contrastingBlackOrWhiteColorOn: cellColor, isFlat: true)
 
         return cell
     }
@@ -66,6 +73,19 @@ class CategoryVC: UITableViewController {
         tableView.reloadData()
     }
     
+    override func updateModel(at indexPath: IndexPath) {
+        if let categoryToDelete = self.categoryArray?[indexPath.row] {
+            do {
+                try self.realm.write {
+                    self.realm.delete(categoryToDelete)
+                }
+            } catch {
+                print("Error deleting item : \(error)")
+            }
+        }
+        self.tableView.reloadData()
+    }
+    
     
     
     
@@ -77,11 +97,17 @@ class CategoryVC: UITableViewController {
         var textField = UITextField()
         alert.addTextField { (categoryTextField) in
             categoryTextField.placeholder = "Type Category Name !"
+            categoryTextField.spellCheckingType = .yes
+            categoryTextField.autocorrectionType = .yes
+            categoryTextField.autocapitalizationType = .sentences
             textField = categoryTextField
+            
         }
         alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (UIAlertAction) in
             let newCategory = Category()
             newCategory.name = textField.text!
+            let newColor = UIColor.randomFlat()
+            newCategory.color = (newColor?.hexValue())!
             self.save(Category: newCategory)
 
         }))
